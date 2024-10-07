@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<body>
+    <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel" >
+        <div class="carousel-indicators" style="height:600px;">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" style="height:600px;">
+            <div class="carousel-item active" style="height:600px;">
+              <img src="{% static '\img\fondos\vuelos.jpg' %}" class="d-block w-100" alt="..." style="height:100%; width:100%;">
+              <div class="carousel-caption d-none d-md-block">
+                <b>
+                <h3>LOS MEJORES VUELOS</h3>
+                <p>Some representative placeholder content for the first slide.</p>
+                </b>
+            </div>
+        </div>
+        <div class="carousel-item" style="height:600px;">
+            <img src="{% static '\img\fondos\hoteles.jpg' %}" class="d-block w-100" alt="..." style="height:100%; width:100%;">
+            <div class="carousel-caption d-none d-md-block">
+                <b>
+                <h3>LOS MEJORES HOTELES</h3>
+                <p>Some representative placeholder content for the second slide.</p>
+                </b>
+            </div>
+        </div>
+        <div class="carousel-item" style="height:600px;">
+            <img src="{% static '\img\fondos\vacaciones.jpg' %}" class="d-block w-100" alt="..." style="height:100%; width:100%;">
+            <div class="carousel-caption d-none d-md-block">
+                <b>
+                <h3>TODO PARA TUS VACACIONES</h3>
+                <p>Some representative placeholder content for the third slide.</p>
+                </b>
+            </div>
+        </div>
+    </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    
+    <div class="collage">
+        <table border="0">
+           
+            <tr>
+                <td class="text1" style="width: 20%; background-color: #e8e4e4; color: #795548;"><h1>MEJORES VUELOS</h1><A>VIEW DETAIL</A></td>
+                <td class="img2" style="width: 20%; background-color: aliceblue;"><img src="{% static '\img\fondos\rio.jpg' %}" style="width:100%;" ></td>
+                <td class="text3" style="width: 20%; background-color: rosybrown; color: #db0075;"><h1>RESERVA LOS MEJORES HOTELES</h1></td>
+                <td class="img3" style="width: 20%; height: 20px; background-color: rosybrown;"><img src="{% static '\img\fondos\hoteles2.jpg' %}" ></td>
+
+            </tr>
+            <tr>
+                <td class="img1" style="width: 20%; background-color: #e8e4e4;"><img src="{% static '\img\fondos\viajes.png' %}" style="width: 90%;"></td>
+                <td colspan="2" class="img4" style="background-color: #d0eaee; width:33%;">  
+                        <H2 style="color: #5000ff;">TODO PARA TUS VACACIONES</H2>
+                        
+                        <img src="{% static '\img\fondos\vacaciones2.png' %}" style="width: 80%;">
+                </td>  
+                <td class="img5" style="background-color: #d0eaee; width:20%;"><img src="{% static '\img\fondos\tren.jpg' %}" style="width: 100%; "></td>
+
+            </tr>
+        </table>
+    </div>
+    
+    <!--
+    <div class="container collage">
+        <div class="col-md-3 style="background-color: #e8e4e4; color: #795548;">
+            <div class="row">
+    
+                <h1>MEJORES VUELOS</h1><A>VIEW DETAIL</A>
+            </div>
+            <div class="row>
+                <img src="{% static '\img\fondos\viajes.png' %}" style="width:100%;" >
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-3" style="background-color: aliceblue;">
+                <img src="{% static '\img\fondos\rio.jpg' %}" style="width:100%;" >
+            </div>
+            <div class="col-md-3" style="background-color: rosybrown; color: #db0075;">
+                <h1>RESERVA LOS MEJORES HOTELES</h1>
+                
+            </div>
+            <div class="col-md-3" style="height: 20px; background-color: rosybrown;">
+                <img src="{% static '\img\fondos\hoteles2.jpg' %}" >
+            </div>
+    
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <H2 style="color: #5000ff;">TODO PARA TUS VACACIONES</H2>         
+                   <img src="{% static '\img\fondos\vacaciones2.png' %}" style="width: 80%;">
+            </div>
+            <div class="col-md-3" style="background-color: #d0eaee;">
+                <img src="{% static '\img\fondos\tren.jpg' %}" style="width: 100%; ">
+            </div>
+            
+        </div>
+    </div>
+-->
+
+    <div class="container my-5">
+        <!--Spinner-->
+      
+        <div class="spinner-border text-primary" role="status" id="loading" style="display: none;">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+
+
+        <!--Cartas dinámicas-->
+        <section class="row" id="card-dinamicas"></section> 
+        
+        <!--Template-->
+        <template id="template-card">
+            <article class="col-12 col-md-6 col-lg-3 mb-3">
+                <div class="card text-center shadow" style="height: 100%;">
+                    <img src="" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary lead"></h5>
+                        <p class="lead text-secondary"></p>
+                    </div>
+                </div>
+            </article>
+        </template>
+    </div>
+
+    
+    <table class="contact0">
+        <tr>
+            <td class="azul">
+                <img src="{% static 'miMuebleria\media\collage\sillon-oferta.jpg' %}" alt="sillon cafe" class="imagen0">
+                <div class="texto-superpuesto0">
+                    <h1>HOT DEALS THIS WEEK</h1>
+                    <a>on the other hand,we denounce with righteous indignation and dislike men who are so beguiled and demoralized </a>
+                    <br>
+                    <a href="{% url 'tienda' %}"><button type="submit"><b>SHOP NOW ></b></button></a>
+                </div>  
+            </td>
+            <td class="blanco">
+                <div class="sub10">
+                    <h1>SALE UP 50%</h1>
+                    <figure>
+                    <img src="{% static 'miMuebleria\media\collage\sillon-oferta-sinfondo.png' %}"class="azul" alt="FRITZ HANSEN BROWN SOFA">
+                    <figcaption><b>FRITZ HANSEN BROWN SOFA</b></figcaption>
+                    <a> Classic Sofa</a>
+                    </figure>
+                    <a style="color: #efb810;font-size:25px;"><b> &#8364 390.00 </b></a><a style="color: #efb810; font-size:20px;"><del><b> &#8364 780.00</b></del></a>
+                </div>
+                    <br>
+                    <br>
+                <div class="sub2">
+                    <div class="sub"><img src="{% static 'miMuebleria\media\sillones\taburete.png' %}"></div>
+                    <div class="sub"><img src="{% static 'miMuebleria\media\sillones\sillon-amarillo.png' %}"></div>
+                    <div class="sub"><img src="{% static 'miMuebleria\media\sillones\sillon-blanco.png' %}"></div>
+                    <div class="sub"><img src="{% static 'miMuebleria\media\sillones\sillon-rayas.png' %}"></div>
+                </div>
+            </div>
+            </td>
+        </tr>
+    </table>
+    <center>
+    <div class="life-style">
+    <table class="columnas">
+        <tr>
+            <td colspan="3" class="cabesal">
+
+            </td>
+        </tr>
+      <tr>
+        <td class="columna1"></td>
+        <td class="columna2">
+           
+          <table class="ta">
+            <tr>
+                <td colspan="2">
+                    <h1>FURNITURE BLOG</h1>
+                    <a >Lastest News of Week</a>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="{% static 'miMuebleria\media\sillones\sillones.jpg' %}"></td>
+                <td class="life">
+                    <a>LIFE STYLE</a>
+                    <H3>Underground Apartment In Barcelona</H3>
+                    <p>Lorem Ipsum is simply dummy text of the rinting and typesetting indus try.Lorem Ipsum has been the industrys standard dummy text ever since the 1500s. when an unknown printer took...</p>
+                    <button>READ MORE ></button>
+                </td>
+            </tr>
+            <tr>
+                <td class="life">
+                    <a>LIFE STYLE</a>
+                    <H3>Underground Apartment In Barcelona</H3>
+                    <p>Lorem Ipsum is simply dummy text of the rinting and typesetting indus try.Lorem Ipsum has been the industrys standard dummy text ever since the 1500s. when an unknown printer took...</p>
+                    <button>READ MORE ></button>
+                </td>
+                <td><img src="{% static 'miMuebleria\media\sillones\sala.jpg' %}"></td>
+            </tr>
+          </table>
+        </td>
+        <td class="columna3">    <p class="vertical-text2">CRETIVE DESIGN</p>
+        </td>
+      </tr>  
+      <tr>
+        <td colspan="3" class="piepag"></td>
+      </tr>
+    </table>
+    </div>
+    </center>
+    <div class="collage2">
+        <table>
+            <tr>
+                <td class="bl"></td>
+            </tr>
+        </table>
+        <div class="accesorio"><img src="{% static 'miMuebleria\media\collage\mesa.jpg' %}"></div>
+        <div class="accesorio"><img src="{% static 'miMuebleria\media\collage\banca-silla.jpg' %}"></div>
+        <div class="accesorio"><img src="{% static 'miMuebleria\media\collage\maceta.jpg' %}"></div>
+        <div class="accesorio"><img src="{% static 'miMuebleria\media\collage\poste.jpg' %}"></div>
+        <div class="accesorio"><img src="{% static 'miMuebleria\media\collage\bancas.jpg' %}"></div>
+        <table>
+            <tr>
+                <td class="bl"></td>
+            </tr>
+        </table>
+    </div>
+ 
+</body>
+{% endblock %}

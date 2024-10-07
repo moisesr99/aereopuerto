@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="fondo" >
+    {% if messages %}
+        <div class="alert alert-danger" role="alert" onload="deshabilitaRetroceso()">
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <br>
+    <form action="publicar/" method="post">
+    {% csrf_token %}
+        <div>
+            <table class="formato">
+                <tr>
+                    <td><h3>Titulo: </h3></td>
+                    <td><input type="text" name="titulo" required></td>
+                </tr>
+                <tr>
+                    <td><h3>descripcion: </h3></td>
+                    <td><textarea name="descripcion" required></textarea></td>
+                </tr>
+                <tr>
+                    <td><h3>Imagen (opcional): </h3></td>
+                    <td> <input type="file" name="imagen" id="imagen" accept=".jpg, .jpeg, .png, .gif"></td>
+                </tr>
+                <tr>
+                    <td><h3>Categoria: </h3></td>
+                    <td><input type="text" name="categoria" style="text-transform:uppercase;" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="subir"></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+   
+    
+</div>
+<!--MOSTRAR CATEGORIAS-->
+<h1 style="justify-content:center; text-align:center;"> POST sobre los viajes de otros usuarios</h1>
+<section>
+    <div class="menu_categorias">
+        <p>Eliga una categoria </p>
+        {% for post in posts%}
+            {% for categoria in post.categorias.all %}
+                
+              <a href="{% url 'categoria' categoria.id %}" class="links_categorias">  {{categoria.nombre}}</a>
+              {% if not forloop.last %}, {% endif %}
+            {% endfor%}
+        {% endfor %}
+
+    </div>
+</section>
+<!--PARTE PARA MOSTRAR LOS POST-->
+
+{% for post in posts%}
+<section class="page-section clearfix">
+    <div class="container">
+        <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt="imagen de referencia">
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                <h2 class="section-heading mb-4">
+                    <span class="section-heading-lower">{{post.titulo}}</span>
+                    <span class="section-heading-upper">
+                        {% for categoria in post.categorias.all %}
+                            {{ categoria.nombre }}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </span>
+                </h2>
+                <p class="mb-3">{{post.contenido}} ... <b><h3>{{post.autor}}</h3></b></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endfor %}
+    
+
+{% endblock %}

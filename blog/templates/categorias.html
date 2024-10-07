@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="fondo" >
+    {% if messages %}
+        <div class="alert alert-danger" role="alert" onload="deshabilitaRetroceso()">
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <br>
+    <form action="publicar/" method="post">
+    {% csrf_token %}
+        <div class="formato">
+            <h3>Titulo: <input type="text" name="titulo" required></h3>
+            <br>
+            <p>descripcion: <textarea name="descripcion" required></textarea></p>
+            <br>
+            <h3>Imagen (opcional): <input type="image" name="imagen" ></h3>
+            <br>
+            <h3>Categoria: <input type="text" name="categoria" required> </h3>
+            <br>
+            <input type="submit" value="subir">
+        </div>
+    </form>
+   
+    
+</div>
+<h1 style="justify-content:center; text-align:center;"> POST sobre los viajes de otros usuarios</h1>
+<section>
+    <div class="menu_categorias">
+        <p>Eliga una categoria </p>
+        {% for post in posts%}
+            {% for categoria in post.categorias.all %}
+                {{categoria.nombre}}
+            {% endfor%}
+        {% endfor %}
+
+    </div>
+</section>
+{% for post in posts%}
+<section class="page-section clearfix">
+    <div class="container">
+        <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt="imagen de referencia">
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                <h2 class="section-heading mb-4">
+                    <span class="section-heading-lower">{{post.titulo}}</span>
+                    <span class="section-heading-upper">
+                        {% for categoria in post.categorias.all %}
+                            {{ categoria.nombre }}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </span>
+                </h2>
+                <p class="mb-3">{{post.contenido}} ... <b><h3>{{post.autor}}</h3></b></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endfor %}
+    
+
+{% endblock %}

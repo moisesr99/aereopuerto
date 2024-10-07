@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.background-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/img/paris.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+.content {
+    text-align: center;
+    margin-top: 15px;
+    color: #b2aba5; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    width: 400px ;
+    height:"200";
+
+}
+.card-content{
+    padding: 16px;
+}
+.registro{
+    padding: 25px;
+    margin-left: 10px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    justify-content: center;
+    justify-items: center;
+}
+.usuario {
+    text-align: left;
+    margin-left: 15px;
+ 
+}
+.contraseña{
+    text-align: left;
+    margin-left: 15px;
+    
+}
+.card-content h3{
+    font-size: 28px;
+    margin-bottom: 8px;
+    justify-content: center;
+}
+.card-content h1{
+    padding: 0px;
+    margin: 0px;
+}
+
+.card-container{
+    display: flex;
+    justify-content: center;
+    position: center;
+    flex-wrap: wrap;
+    margin-top: 0px;
+    background-color:#5e6668;
+    border-radius: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+input, textarea {
+    margin-bottom: 1em;
+    width: 100%; /* Hace que los inputs ocupen todo el ancho del contenedor */
+}
+
+.card {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mi-boton {
+    background-color: #b10005;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mi-boton:hover {
+    background-color: #a00004;
+}
+
+a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.input-group {
+    display: flex;
+    gap: 1em; /* Espacio entre los input fields */
+}
+
+.input-field {
+    flex: 1; /* Hace que los input fields se ajusten al mismo tamaño */
+}

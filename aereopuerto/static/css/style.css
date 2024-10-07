@@ -1,0 +1,273 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100% !important;
+    width: 100%;
+    justify-content: center;
+    background-color:rgb(197, 235, 235);
+    align-items: center;
+}
+
+.lista-menu{
+    justify-content: center;
+    text-align: center;
+    color: azure;
+}
+
+.lista-menu li,a,h3{
+    display: inline;
+    text-decoration: none;
+    color: white;
+}
+.vuelo{
+    width: max-content;
+    justify-content: center;
+    text-align: center;
+
+}
+.ciudades{
+
+    height: 100%;
+    justify-content: center;
+    text-align: left;
+}
+.ciudades td{
+ padding: 0%;
+}
+.ciudades input{
+    width: 100%;
+}
+
+.buscar{
+    width: max-content;
+    height: max-content;
+    margin-left: 30px;
+}
+
+.registro{
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 0px;
+    padding: 0px;
+    
+    justify-content: center;
+    justify-items: center;
+    width:max-content;
+    height: 100%;  
+    position:relative;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.opc button{
+    margin-right: -5px;
+    margin-left: 0px;
+    margin-bottom: -10px;
+    padding: 0px;
+    background-color: #677075;
+    color: white;
+    width: max-content;
+    height: 40px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    position: relative;
+}
+.opc{
+    padding: 0px;
+    margin-bottom: -11px;
+    justify-content: center;
+    align-items:end;
+    justify-items: center;
+    margin-left: 16%; 
+    table-layout: fixed;
+}
+.opc td{
+    width: max-content;
+    height: max-content;
+}
+.registro table{
+    padding: 0px;
+    border: 0px;
+    background-color:rgba(0, 0, 0, 0) ;
+    display: flex;
+}
+
+
+.mi-boton{
+    display: block;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    width:30% ;
+    font-size: small;
+    background-color: #b10005;
+    color: white;
+    border: 0ch;
+    margin-left: 35%;
+    padding: 10px 32px;
+    border-radius: 10px;
+}
+.border-bottom {
+    border-bottom: 2px solid black; /* Establece el grosor y color del borde inferior */
+  }
+  
+  .border-bottom td,th {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #b10005; /* Asegura que solo el borde inferior sea visible */
+  }
+
+  .resultados{
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 0px;
+    padding: 0px;
+    justify-content: center;
+    justify-items: center;
+    
+    height: 100%;  
+    
+    
+   
+  }
+  .resultados th,td{
+    width: 20%;
+    height: 50px;
+    justify-content: center;
+    text-align: center;
+  }
+  .no-puntos {
+    list-style-type: none;
+    padding: 5px;
+    margin: 2px;
+    margin-bottom: 10px;
+}
+.gris {
+    color: gray;
+    padding: 5px;
+    margin: 2px;
+}
+
+.fondo{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #795548;
+    margin: 10px auto;
+}
+.imagen3{
+    width: 100%; /* Ancho de la imagen al 100% del contenedor */
+    height: max-content;/* Mantener la proporción de la imagen */
+    display: block;  /* Eliminar el espacio en línea alrededor de la imagen */
+}
+.imagen2{
+    width: 100%; /* Ancho de la imagen al 100% del contenedor */
+    height:max-content;/* Mantener la proporción de la imagen */
+    display: block;  /* Eliminar el espacio en línea alrededor de la imagen */
+}
+.texto-superpuesto{
+    position: absolute; /* Posiciona el texto absolutamente dentro del contenedor */
+    font-size: 24px; /* Tamaño de la fuente */  
+    text-align: center; /* centrar texto */
+
+    top: 25%;
+    justify-content: center;
+    height: max-content;
+    padding: 0%;
+    margin-bottom: 0%;
+}
+.texto-superpuesto a, p, h3{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.transparente{
+    
+    background-color:rgba(255, 255, 255, 0.5) ;
+    justify-content: center;
+    text-align: center;
+}
+.contacto{
+    position: absolute;
+    text-align: center;
+    justify-content: center;
+}
+
+.centrar{
+    width: 80%;
+    height: max-content;
+    justify-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.menu a{
+    font-family: 'Times New Roman', Times, serif;
+}
+.activo{
+    background-color: #b10005;
+    color: white;
+    font-size:medium;
+    border: none;
+    cursor: pointer;
+    margin: 4px 2px;
+    border-radius: 12px;
+    text-align: center;
+    padding: 10px 22px;
+}
+.inactivo{
+    background-color:#677075 ;
+    color: white;
+    font-size:medium;
+    border: none;
+    cursor: pointer;
+    margin: 4px 2px;
+    border-radius: 12px;
+    text-align: center;
+    padding: 10px 22px;
+}
+.menu{
+    background-color: #e8e4e4;
+}
+.registro h3{
+    color: #795548;
+}
+/* estilos switch boton */
+
+.menu_categorias{
+    width: 70%;
+    justify-content: center;
+    background-color: bisque;
+    margin: auto;
+    text-align: center;
+    color: blueviolet;
+}
+
+.links_categorias{
+    color: blueviolet !important;
+    text-decoration: underline !important;
+}
+.formato {
+    padding: 0%;
+    margin-top: 20px ;
+}
+.formato  input{
+    padding: 0%;
+    width: 100%;
+}
+.formato textarea{
+    width: 100%;
+    height: auto;
+    padding: 0%;
+}
+.piep{
+    text-align: center;
+    justify-content: center;
+    background-color: darkkhaki !important ;
+    margin-top: auto; /*mandar hasta abajo el pie de pagina*/
+    width: 100%;
+    margin: auto;
+}

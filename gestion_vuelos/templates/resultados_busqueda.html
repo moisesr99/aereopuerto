@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<img src="{% static 'img/fondos/fondo_cafe.jpg' %}" alt="fondo" class="imagen2">
+
+<div class="texto-superpuesto">
+    <div class="centrar">
+    <p class="transparente">Vuelos : <b>{{query}} a {{query2}}</b></p>
+    <b> <a href="{% url 'buscar' %}">Volver a buscar</a> </b>
+    <br>
+    <br>
+
+    {% if vuelos %}
+        <p class="transparente">Vuelos encontrados: {{vuelos|length}} vuelos</p>
+        
+        <table class="resultados border-bottom">
+            <tr>
+                <th>Destino</th>
+                <th>Origen</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Asientos</th>
+                <th></th>
+
+            </tr>
+            {% for vuelo in vuelos %}
+            <tr>
+                <td>{{vuelo.destino}}</td>
+                
+                <td>{{vuelo.partida}}</td>
+                
+                <td>{{vuelo.fechaSAL}}</td>
+
+                <td>{{vuelo.hora}}</td>
+                <td>
+                    {% if vuelo.asientosDis > 0 %}
+                       <h3> {{vuelo.asientosDis}} </h3>
+                    {% else %}
+                        <h3>Asientos Agotados</h3>
+                    {% endif %} 
+                </td>
+                <td>
+                    {% if vuelo.asientosDis > 0 %}
+
+                    <a href="{% url 'buscar' %}" ><input type="submit" value="comprar" class="activo"></a>
+                    {% else %}
+                        <input type="submit" value="Agotados" class="inactivo">
+                    {% endif %} 
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+
+    {% else %}
+        <p> no se encontraron vuelos para {{query2}} </p>
+    {% endif %}
+
+    <br>
+
+    {% if vuelos_regreso %}
+        <p class="transparente"> Vuelos de regreso encontrados: {{vuelos_regreso|length}} vuelos </p>
+        <p class="transparente">Vuelos : <b>{{query2}} a {{query}}</b></p>
+        <table class="resultados border-bottom">
+            <tr>
+                <th>Destino</th>
+                <th>Origen</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Asientos</th>
+                <th></th>
+
+            </tr>
+            {% for vuelo in vuelos_regreso %}
+            <tr>
+                <td>{{vuelo.destino}}</td>
+                
+                <td>{{vuelo.partida}}</td>
+                
+                <td>{{vuelo.fechaSAL}}</td>
+
+                <td>{{vuelo.hora}}</td>
+                <td>
+                    {% if vuelo.asientosDis > 0 %}
+                       <h3> {{vuelo.asientosDis}} </h3>
+                    {% else %}
+                        <h3>Asientos Agotados</h3>
+                    {% endif %} 
+                </td>
+                <td>
+                    {% if vuelo.asientosDis > 0 %}
+
+                    <a href="{% url 'buscar' %}" ><input type="submit" value="comprar" class="activo"></a>
+                    {% else %}
+                        <input type="submit" value="Agotados" class="inactivo">
+                    {% endif %} 
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {%else%}
+        {% if fecha2 %}
+            <p class="transparente border-bottom btn-bg-danger"> No se encontraron vuelos de regreso para {{query2}} a {{query}} para el dia {{fecha2}}
+        {% else %}
+            <p></p>
+        {% endif %}
+    {%endif%}
+    </div>
+</div>
+{% endblock %}

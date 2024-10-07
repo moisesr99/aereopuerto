@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<img src="{% static 'img/fondos/soporte.jpg' %}" alt="fondo" class="imagen3">
+<div class="registro texto-superpuesto" style="background-color:#e8e4e4 color: #795548;">
+    {% if form.errors %}
+        <p style="color: red;">por favor revisa este campo </p>
+    {% endif %}
+
+    {% if "valido" in request.GET %}
+        <p>INFORMACION ENVIADA CORRECTAMENTE, PRONTO NOS COMUNICAREMOS</p>
+     {% endif %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type="submit" value="enviar">
+    </form>
+
+</div>
+{% endblock %}

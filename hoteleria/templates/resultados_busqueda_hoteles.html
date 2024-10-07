@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<img src="{% static 'img/fondos/fondo_cafe.jpg' %}" alt="fondo" class="imagen2">
+
+<div class="texto-superpuesto">
+    <div class="centrar">
+    <p class="transparente">Hoteles en: <b>{{query}} </b></p>
+    <b> <a href="{% url 'busqueda_hoteles' %}">Volver a buscar</a> </b>
+    <br>
+    <br>
+
+    {% if hoteles %}
+        
+        <p class="transparente">Hoteles encontrados: {{hoteles|length}} hoteles</p>
+        
+        <table class="resultados border-bottom">
+            <tr>
+                <th>Destino</th>
+                <th>Nombre del Hotel</th>
+                <th>imagen</th>
+                <th>Habitaciones Disponibles</th>
+                <th>   </th>
+                
+
+            </tr>
+            {% for hotel in hoteles %}
+            <tr>
+                <td>{{hotel.ciudad}},{{hotel.estado}}</td>
+                
+                <td>{{hotel.nombreHotel}}</td>
+                <td>
+                    <!-- Button trigger modal -->
+                    
+                        <img src="{{hotel.imagen.url}}" style="width:50%; height:80%;">     
+                    
+
+                    
+                </td>
+
+                <td>{{hotel.habitacionesDIS}}</td>
+
+                <td>
+                    {% if hotel.habitacionesDIS > 0 %}
+
+                    <a href="{% url 'buscarH' %}" ><input type="submit" value="reservar" class="activo"></a>
+                    {% else %}
+                        <input type="submit" value="Agotados" class="inactivo">
+                    {% endif %} 
+                </td>
+                
+            </tr>
+            {% endfor %}
+        </table>
+        
+
+    {% else %}
+        <p> no se encontraron hoteles para {{query}} </p>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}
