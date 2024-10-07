@@ -19,7 +19,7 @@ class Vregistro(View):
             
             login(request, usuario)
             
-            return redirect('busqueda_vuelos')
+            return redirect('home')
         else:
             for msg in form.error_messages:
                 messages.error(request, form.error_messages[msg])
@@ -27,7 +27,7 @@ class Vregistro(View):
 
 def cerrar_sesion(request):
     logout(request) 
-    return redirect('busqueda_vuelos')
+    return redirect('home')
 
 def iniciar_sesion(request):
     if request.method=="POST":
@@ -38,7 +38,7 @@ def iniciar_sesion(request):
             usuario=authenticate(username=nombre_usuario, password=contraseña_usuario)
             if usuario is not None:
                 login(request, usuario)
-                return redirect('busqueda_vuelos')
+                return redirect('home')
             else:
                 messages.error(request, "* usuario no valido")
         else:

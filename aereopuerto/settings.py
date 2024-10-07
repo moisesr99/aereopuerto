@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'autentificacion',#logins
     'crispy_forms', #app instalada para dar formato a los formularios django
     'inicio', #app principal para home y contacto
+    'pedidos', #registrar pedidos de la app tienda
 ]
 
 MIDDLEWARE = [
