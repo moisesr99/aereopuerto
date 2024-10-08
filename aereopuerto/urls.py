@@ -28,5 +28,6 @@ urlpatterns = [
     path('tienda/',include('tienda.urls')), #cuarta app tienda
     path('carro/',include('carro.urls')), #app carro
     path('login/',include('autentificacion.urls')), #app para logear
+    path('pedidos/',include('pedidos.urls')), #app para logear
   
     ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  

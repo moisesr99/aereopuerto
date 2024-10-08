@@ -10,7 +10,7 @@ from django.db.models import F, Sum, FloatField
 User=get_user_model()
 
 class Pedido(models.Model):
-    usuario_id=models.ForeignKey(User, on_delete=models.CASCADE)
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
     create_at=models.DateTimeField(auto_now_add=True)
     update=models.DateTimeField(auto_now=True)
     
@@ -31,15 +31,15 @@ class Pedido(models.Model):
         
         
 class LineaPedido(models.Model):
-    usuario_id=models.ForeignKey(User, on_delete=models.CASCADE)
-    producto_id=models.ForeignKey(Producto, on_delete=models.CASCADE)
-    pedido_id=models.ForeignKey(Pedido, on_delete=models.CASCADE)
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    producto=models.ForeignKey(Producto, on_delete=models.CASCADE)
+    pedido=models.ForeignKey(Pedido, on_delete=models.CASCADE)
     cantidad=models.IntegerField(default=1)
     create_at=models.DateTimeField(auto_now_add=True)
     update=models.DateTimeField(auto_now=True)
     
     def __str__(self):
-        return f'{self.cantidad} unidades de {self.producto_id.nombre}'
+        return f'{self.cantidad} unidades de {self.producto.nomProduct}'
     
     class Meta:
         db_table='lineapedidos'
