@@ -10,7 +10,7 @@
             <div class="row">
                 {% for producto in productos %}
                 <div class="col-lg-3">
-                    <div class="card text-center shadow" style="height: 350px; margin: 5px 5px;">
+                    <div class="card text-center shadow" style="height: 100%; margin: 5px 5px;">
                         {% if producto.imagen %}
                         <img src="{{ MEDIA_ROOT }}{{ producto.imagen.url }}" alt="{{ producto.nomProduct }}" class="card-img-top" style="height: 40%">
                         {% else %}

@@ -23,7 +23,7 @@ class CategoriaProd(models.Model):
 
 class Producto(models.Model):
     nomProduct = models.CharField(max_length=100, help_text='Nombre del producto')
-    categorias = models.ManyToManyField(CategoriaProd)
+    categorias = models.ForeignKey(CategoriaProd, on_delete=models.CASCADE, null=False, blank=False, default=1)
     precio = models.DecimalField(max_digits=10, decimal_places=2, help_text='Precio del producto')
     imagen = models.ImageField(upload_to=upload_to, null=True, blank=True, help_text='Imagen del producto frontal')
     ventas_totales = models.IntegerField(default=0)

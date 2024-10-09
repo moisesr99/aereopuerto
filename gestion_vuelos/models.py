@@ -20,7 +20,10 @@ class vuelos (models.Model):
    # fechaREG=models.DateField(default='2024-01-01') #inncesario
     hora=models.TimeField()                 #heredar
     asientosDis=models.IntegerField()          
-    precio=models.IntegerField()
+    precio = models.DecimalField(max_digits=10, decimal_places=2, help_text='Precio del producto')
+
+    descuento = models.IntegerField(default=0, help_text='Descuento')
+
             
 class ticket (models.Model):    #esta tabla heredara atributos de las tablas anteriorest
     numero=models.IntegerField()

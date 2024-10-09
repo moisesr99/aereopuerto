@@ -13,7 +13,7 @@ def tienda(request):
 
 
 
-def categoria_view(request,categoria_id):
-    filtro_categoria = CategoriaProd.objects.get(id=categoria_id)
-    prd=Producto.objects.filter(categorias=filtro_categoria)
-    return render(request,"categoria_tienda.html",{"categoria":filtro_categoria,"productos":prd})
+#def categoria_view(request,categoria_id):
+#    filtro_categoria = CategoriaProd.objects.get(id=categoria_id)
+#    prd=Producto.objects.filter(categorias=filtro_categoria)
+#    return render(request,"categoria_tienda.html",{"categoria":filtro_categoria,"productos":prd})
