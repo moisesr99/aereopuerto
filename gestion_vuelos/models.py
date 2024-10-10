@@ -1,6 +1,9 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from datetime import date
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 # Create your models here.
 
@@ -21,7 +24,6 @@ class vuelos (models.Model):
     hora=models.TimeField()                 #heredar
     asientosDis=models.IntegerField()          
     precio = models.DecimalField(max_digits=10, decimal_places=2, help_text='Precio del producto')
-
     descuento = models.IntegerField(default=0, help_text='Descuento')
 
             
@@ -29,7 +31,7 @@ class ticket (models.Model):    #esta tabla heredara atributos de las tablas ant
     numero=models.IntegerField()
     realizado=models.BooleanField(default='False')
     fecha_llegada=models.DateField(default='2024-01-01')
-    nombre=cliente.nombre
+    nombre=models.ForeignKey(User, on_delete=models.CASCADE)
    
     
     def __str__(self):
