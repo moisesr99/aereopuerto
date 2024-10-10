@@ -37,4 +37,17 @@ def agregar_vuelo(request, vuelo_id):
     ticket=Ticket(request)
     vuelo=vuelos.objects.get(id=vuelo_id)
     ticket.comprar(vuelo=vuelo)
-    return redirect("tienda")
+    return redirect("buscar")
+
+def eliminar_vuelo(request, vuelo_id):
+    ticket=Ticket(request)
+    vuelo=vuelos.objects.get(id=vuelo_id)
+    ticket.comprar(vuelo=vuelo)
+    return redirect("buscar")
+
+def agregar_vuelo(request, vuelo_id):
+    ticket=Ticket(request)
+    vuelo=vuelos.objects.get(id=vuelo_id)
+    ticket.comprar(vuelo=vuelo)
+    return redirect("buscar")
+

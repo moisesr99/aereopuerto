@@ -11,9 +11,27 @@
     <br>
     numero de pedido: {{pedido.id}}
     <br>
-    email del usuario: {{emailusuario}}
+    email del usuario: {{email.usuario}}
     <br>
     Lineas de Pedido: {{lineas_pedido}}
+    <h2>Detalles del Pedido</h2>
+                    <ul id="lineas-pedido">
+                        {% for linea in lineas_pedido %}
+                        <li>
+                            <b><i>Producto: {{ linea.producto.nomProduct }}</i></b> <br>
+                            Cantidad: {{ linea.cantidad }} <br>
+                            Precio: ${{ linea.total_pedido }}
+                            {% for key, value in request.session.carro.items %}
+                                {% if value.descuento > 0 %}
+                                    <td>$ {{value.precio_final }}</td>
+                                {%else%}
+                                    <td>$ {{value.precio }}</td>
+                                {%endif%}
+                            {% endfor %}
+                        </li>
+                        {% endfor %}
+                        <li><b> TOTAL: {{importe_total_carro}}</b></li>
+                    </ul>
     
 </body>
 </html>
