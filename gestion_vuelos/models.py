@@ -25,6 +25,13 @@ class vuelos (models.Model):
     asientosDis=models.IntegerField()          
     precio = models.DecimalField(max_digits=10, decimal_places=2, help_text='Precio del producto')
     descuento = models.IntegerField(default=0, help_text='Descuento')
+    
+    @property
+    def precio_final(self):
+        # Calcula el precio final aplicando el descuento solo si existe un descuento
+        if self.descuento > 0:
+            return self.precio - (self.precio * self.descuento / 100)
+        return self.precio #no remplazar el precio sin descuento
 
             
 class ticket (models.Model):    #esta tabla heredara atributos de las tablas anteriorest
