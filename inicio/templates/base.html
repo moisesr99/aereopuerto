@@ -57,6 +57,7 @@
                     <img src="{% static 'img/iconos/telephone.svg' %}" width="25px" height="25px">+52 55 987 654 32
                     </button>
                   </li>
+                  <div class="dropdown">
                   {% if user.is_authenticated %}
                   
                    <a style="color:rgb(166, 52, 211);" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -72,10 +73,12 @@
                     <li><a class="dropdown-item" href="{% url 'autentificacion:cerrar_sesion' %}">Cerrar Sesion</a></li>
                   </ul>
                     {%else%}
-
-                    <a style="color:rgb(166, 52, 211);" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      PERFIL
-                    </a>
+                    
+                      <a style="color:rgb(166, 52, 211);" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        PERFIL
+                      </a>
+                    
+                    
                     
                     <ul class="dropdown-menu">
                       
@@ -86,8 +89,7 @@
                       <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                     {% endif %}
-                  </li>
-                </ul>
+                  </div>
                 <!-- Modal -->
                   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
