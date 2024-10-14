@@ -22,7 +22,8 @@ class Carro:
             "cantidad":1,
             "imagen":producto.imagen.url,
             "descuento":producto.descuento,
-            "precio_final": str(producto.precio - (producto.precio * producto.descuento / 100))
+            "precio_final": str(producto.precio - (producto.precio * producto.descuento / 100)),
+            "stock":producto.stock
             }
         else:
              # Si el producto ya está en el carrito, se actualiza la cantidad y el precio
