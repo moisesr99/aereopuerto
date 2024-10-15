@@ -19,6 +19,16 @@
     <table class="table table-bordered" style="color: rgb(22, 21, 21);" onload="deshabilitaRetroceso()">
         <thead onload="deshabilitaRetroceso()">
             <tr>
+                <td colspan="4">
+                    <h2>Categorías</h2>
+                    <ul>
+                        {% for cat in categorias %}
+                            <h3><a href="{% url 'categoria_view' cat.id %}">{{ cat.nombreCatProd }}</a></h3>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
                 <th colspan="4" class="text-center">
                     Artículos Seleccionados
                 </th>

@@ -36,8 +36,9 @@ class restar_producto(View):
     def post(self,request, producto_id):
         carro=Carro(request)
         producto=Producto.objects.get(id=producto_id)
-        carro.restar_producto(producto=producto)
+        carro.restar_producto(producto)
         return redirect("tienda")
+
 
 class limpiar_carro(View):
     def post(self,request):

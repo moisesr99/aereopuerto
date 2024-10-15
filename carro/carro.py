@@ -23,7 +23,7 @@ class Carro:
             "imagen":producto.imagen.url,
             "descuento":producto.descuento,
             "precio_final": str(producto.precio - (producto.precio * producto.descuento / 100)),
-            "stock":producto.stock
+            "stock":producto.stock,
             }
         else:
              # Si el producto ya está en el carrito, se actualiza la cantidad y el precio
@@ -92,7 +92,7 @@ class Carro:
     def obtener_cantidad(self, producto):
         producto_id = str(producto.id)
         if producto_id in self.carro:
-            return self.carro[producto_id]['stock']
+            return self.carro[producto_id]['cantidad']
         return 0
 
     def vaciar_carro(self):

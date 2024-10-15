@@ -1,12 +1,12 @@
 from django.urls import path
-from .import views
+from .views import agregar_producto, eliminar_producto, limpiar_carro, restar_producto
 
 
 app_name = 'carro'  # Define el namespace
 
 urlpatterns = [
-    path("agregar/<int:producto_id>/",views.agregar_producto, name="agregar"),
-    path("eliminar/<int:producto_id>/",views.eliminar_producto, name="eliminar"),
-    path("restar/<int:producto_id>/",views.restar_producto, name="restar"),
-    path("limpiar/",views.limpiar_carro, name="vaciar"),
+    path("agregar/<int:producto_id>/", agregar_producto.as_view(), name="agregar"),
+    path("eliminar/<int:producto_id>/",eliminar_producto.as_view(), name="eliminar"),
+    path("restar/<int:producto_id>/",restar_producto.as_view(), name="restar"),
+    path("limpiar/",limpiar_carro.as_view(), name="vaciar"),
 ]
