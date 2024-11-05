@@ -7,6 +7,7 @@ from carro.carro import Carro
 # Create your views here.
 def home(request):
     carro=Carro(request)
+    
     return render(request, "inicio.html")
 
 #validacion manual del formulario contacto

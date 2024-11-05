@@ -5,6 +5,7 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.core.mail import send_mail
 
+
 #from "app"."archivo.py" impor "clase"
 from carro.carro import Carro
 
@@ -35,7 +36,7 @@ def procesar_pedido(request): # pedidos para la app de tienda
                 )
     messages.success(request,"el pedido se ha creado correctamente")
     
-    return render(request, "gracias.html")
+    return render(request, "confirmar_pedido.html")
 
 
 @login_required(login_url='/login/iniciar_sesion')

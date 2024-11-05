@@ -11,8 +11,9 @@ User = get_user_model()
 
 def tienda(request):
     productos=Producto.objects.all()
+    categorias = CategoriaProd.objects.all()
     
-    return render(request,"tienda.html",{"productos":productos})
+    return render(request,"tienda.html",{"productos":productos,"categorias":categorias})
 
 
 class ConfirmacionPedidoView(View):

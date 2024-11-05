@@ -7,6 +7,7 @@ from django.views import View
 from tienda.models import Producto
 
 
+
 # Create your views here.
 ## funciones para la app tienda
 class agregar_producto(View):
