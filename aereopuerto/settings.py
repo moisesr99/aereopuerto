@@ -168,6 +168,8 @@ EMAIL_USE_TLS=True
 EMAIL_PORT=587
 EMAIL_HOST_USER="moises.ramirezr@fgr.org.mx"
 EMAIL_HOST_PASSWORD="Et050941-MOraR"
+DEFAULT_FROM_EMAIL = 'moises.ramirezr@fgr.org.mx'
+
 
 CRISPY_TEMPLATE_PACK="bootstrap4"
 

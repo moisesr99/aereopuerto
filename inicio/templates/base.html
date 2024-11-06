@@ -59,7 +59,7 @@
                     <img src="{% static 'img/iconos/telephone.svg' %}" width="25px" height="25px">+52 55 987 654 32
                     </button>
                   </li>
-                  <div class="dropdown">
+                  <div class="dropdown" style="z-index:100;">
                   {% if user.is_authenticated %}
                   
                    <a style="color:rgb(166, 52, 211);" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -82,7 +82,7 @@
                     
                     
                     
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" style="z-index:100;">
                       
                       <li><a style="color:rgb(166, 52, 211);" class="dropdown-item" href="{% url 'autentificacion:iniciar_sesion' %}">INICIAR SESION</a></li>
                       <li><a class="dropdown-item" href="{% url 'autentificacion:autentificar' %}">CREAR UNA CUENTA</a></li>
