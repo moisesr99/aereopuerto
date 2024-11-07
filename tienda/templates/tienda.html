@@ -3,13 +3,13 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
+<div class="">
     <div class="row">
         <!-- Productos -->
         <div class="col-lg-8">
             <div class="row">
                 {% for producto in productos %}
-                <div class="col-lg-3">
+                <div class="col-lg-3" style="margin-bottom:20px ;">
                     <div class="card text-center shadow" style="height: 100%; margin: 5px 5px;">
                         {% if producto.imagen %}
                         <img src="{{ MEDIA_ROOT }}{{ producto.imagen.url }}" alt="{{ producto.nomProduct }}" class="card-img-top" style="height: 40%">
@@ -28,7 +28,7 @@
                         </div>
                         {% if producto.descuento > 0 %}
                                 <a class="lead text-secondary">{{ producto.descuento }}% Descuento</a>
-                                Precio final: $ {{ producto.precio_final }}
+                                <b>Precio final: $ {{ producto.precio_final }}</b>
         
                         {% endif %}
 
@@ -68,7 +68,7 @@
                     </div>
                     
                 </div>
-                
+                <br>
                 {% endfor %}
                 <hr>
                 <br>
@@ -80,8 +80,8 @@
         </div>
         
         <!-- Widget del carrito -->
-         <div class="col-lg-1">
-            <div class="sticky-top" style="float:right; width:100%">
+         <div class="col-lg-4">
+            <div class="sticky-top" style="float:right; width:100%; z-index:3;">
                 {% if request.user.is_authenticated %}
 
                     {% include "carro/widget.html" %}

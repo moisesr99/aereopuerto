@@ -35,10 +35,25 @@ def procesar_pedido(request): # pedidos para la app de tienda
                 emailusuario=request.user.email
                 )
     messages.success(request,"el pedido se ha creado correctamente")
+    #
+    return render(request, "confirmar_pedido.html",{"pedido":pedido,"lineas_pedido":lineas_pedido})
+
+def enviar_mail(**kwargs):
+    if Carro:
+        asunto="PEDIDO REALIZADO, GRACIAS"
+        mensaje=render_to_string("email/pedido.html",{
+            "pedido":kwargs.get("pedido"),
+            "lineas_pedido":kwargs.get("lineas_pedido"),
+            "nombreusuario":kwargs.get("nombreusuario"),
+            "email":kwargs.get("emailusuario")
+        })
+        
+        mensaje_texto=strip_tags(mensaje)
+        from_email="moises.ramirezr@fgr.org.mx"
+        to=kwargs.get("emailusuario")
+        
+        send_mail(asunto,mensaje_texto,from_email,[to],html_message=mensaje)
     
-    return render(request, "confirmar_pedido.html")
-
-
 @login_required(login_url='/login/iniciar_sesion')
 def procesar_vuelo(request):
     vuelo=vuelos.objects.create(user=request.user)
@@ -64,20 +79,6 @@ def procesar_vuelo(request):
     
     return render(request, "gracias.html")
 
-def enviar_mail(**kwargs):
-    asunto="PEDIDO REALIZADO, GRACIAS"
-    mensaje=render_to_string("email/pedido.html",{
-        "pedido":kwargs.get("pedido"),
-        "lineas_pedido":kwargs.get("lineas_pedido"),
-        "nombreusuario":kwargs.get("nombreusuario")
-    })
-    
-    mensaje_texto=strip_tags(mensaje)
-    from_email="moises.ramirezr@fgr.org.mx"
-    to=kwargs.get("emailusuario")
-    
-    send_mail(asunto,mensaje_texto,from_email,[to],html_message=mensaje)
-    
 def enviar_mail_vuelos(**kwargs):
     asunto="PEDIDO REALIZADO, GRACIAS"
     mensaje=render_to_string("email/pedido.html",{
