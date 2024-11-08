@@ -38,8 +38,8 @@ def procesar_pedido(request):  # Pedidos para la app de tienda
         emailusuario=request.user.email
     )
 
-    # Generar PDF de pedido y agregarlo a la respuesta
-    pdf_response = generar_pdf_pedido(request, pedido_id=pedido.id)
+    # Generar PDF de pedido y agregarlo a la respuesta, aun no funciona
+    pdf_response = generar_pdf_pedido(request, pedido_id=pedido.id) #deberia descargar el pdf en automatico en la pagina
 
     messages.success(request, "El pedido se ha creado correctamente")
     return render(request, "confirmar_pedido.html", {

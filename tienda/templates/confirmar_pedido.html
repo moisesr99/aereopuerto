@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block content %}
-<img src="{% static 'img/fondos/fondo_cafe.jpg' %}" alt="fondo" class="imagen3">
-<div class="registro texto-superpuesto" id="carga" onload="deshabilitaRetroceso()">
+
+<div class="registro " id="carga" onload="deshabilitaRetroceso()" style="height: max-content;">
     <h2>PEDIDO REALIZADO CON ÉXITO</h2>
-    <p id="usuario">Hola: {{nombreusuario}} </p>
+    <p id="usuario">Hola: {{request.user}} </p>
     <p>A continuación podrás ver los detalles de tu pedido</p>
     <p id="pedido-numero">Número de pedido: {{ pedido.id }}</p>
 
