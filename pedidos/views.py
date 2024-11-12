@@ -5,11 +5,17 @@ from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.core.mail import send_mail
+#reportlab para generar PDF
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet
 from io import BytesIO
+from reportlab.pdfgen import canvas
+#openpyxl para generar EXCEL
+from openpyxl import Workbook
+from openpyxl.styles import Alignment, Border, Font,PatternFill,Side
+#VISTAS
 from carro.carro import Carro
 from gestion_vuelos.models import vuelos
 from pedidos.models import LineaPedido, Pedido
@@ -47,8 +53,8 @@ def procesar_pedido(request):  # Pedidos para la app de tienda
         "lineas_pedido": lineas_pedido,
         "pdf_response": pdf_response
     })
-
-def generar_pdf_pedido(request, pedido_id):
+#INICIA GENERACION DE PDF
+def generar_pdf_pedido(request, pedido_id): 
     # Extrae el pedido y sus detalles
     pedido = Pedido.objects.get(id=pedido_id, user=request.user)
     lineas_pedido = LineaPedido.objects.filter(pedido=pedido)
@@ -109,6 +115,8 @@ def generar_pdf_pedido(request, pedido_id):
     ]))
 
     elements.append(table)
+    
+    
 
     # Genera el contenido del PDF
     doc.build(elements)
@@ -118,6 +126,13 @@ def generar_pdf_pedido(request, pedido_id):
     buffer.close()
     response.write(pdf)
     return response
+
+#TERMINA GENERACION DE PEDF
+#INCIA GENERACION DE EXCEL
+def get (self,request,*args,**kwargs):
+    objeto_a_trabajar=Pedido.objects.all()
+#TERMINA GENERACION DE EXCEL
+
 
 def enviar_mail(**kwargs):
     if Carro:
