@@ -1,4 +1,5 @@
 from django.contrib import messages
+from .models import Pedido, LineaPedido
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -13,6 +14,9 @@ from reportlab.lib.styles import getSampleStyleSheet
 from io import BytesIO
 from reportlab.pdfgen import canvas
 #openpyxl para generar EXCEL
+
+from openpyxl.styles import Font, Alignment
+import openpyxl
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, Border, Font,PatternFill,Side
 #VISTAS
@@ -127,11 +131,66 @@ def generar_pdf_pedido(request, pedido_id):
     response.write(pdf)
     return response
 
-#TERMINA GENERACION DE PEDF
+#TERMINA GENERACION DE PDF
 #INCIA GENERACION DE EXCEL
-def get (self,request,*args,**kwargs):
-    objeto_a_trabajar=Pedido.objects.all()
+def generar_excel_pedido(request, pedido_id):
+    # Extrae el pedido y sus detalles
+    pedido = Pedido.objects.get(id=pedido_id, user=request.user)
+    lineas_pedido = LineaPedido.objects.filter(pedido=pedido)
+    nombreusuario = request.user.username
+
+    # Crear libro de trabajo y hoja
+    wb = openpyxl.Workbook()
+    sheet = wb.active
+    sheet.title = f"Pedido_{pedido_id}"
+
+    # Nombre de las columnas
+    headers = ["Producto", "ID Producto", "Cantidad", "Precio Unitario", "Sub-total"]
+    sheet.append(headers)
+
+    # Estilos para los encabezados
+    for cell in sheet[1]:
+        cell.font = Font(bold=True)
+        cell.alignment = Alignment(horizontal="center")
+
+    # Insertando datos
+    total = 0
+    for linea in lineas_pedido:
+        precio_final = linea.producto.precio_final if linea.producto.descuento > 0 else linea.producto.precio
+        sub_total = linea.cantidad * precio_final
+        total += sub_total
+        
+        # Agregar los datos de cada línea de pedido
+        sheet.append([
+            linea.producto.nomProduct,
+            linea.producto_id,
+            linea.cantidad,
+            f"${precio_final:.2f}",
+            f"${sub_total:.2f}"
+        ])
+
+    # Agregar el total
+    sheet.append(["", "", "", "TOTAL", f"${total:.2f}"])
+
+    # Ajustar el ancho de columnas
+    for column_cells in sheet.columns:
+        length = max(len(str(cell.value)) for cell in column_cells)
+        sheet.column_dimensions[column_cells[0].column_letter].width = length + 2
+
+    # Preparar la respuesta HTTP
+    response = HttpResponse(
+        content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
+    response["Content-Disposition"] = f'attachment; filename="pedido_{pedido_id}.xlsx"'
+
+    # Guardar el archivo en el objeto response
+    wb.save(response)
+
+    return response
+
+    
 #TERMINA GENERACION DE EXCEL
+
 
 
 def enviar_mail(**kwargs):
