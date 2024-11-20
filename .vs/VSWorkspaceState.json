@@ -1,8 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\aereopuerto",
+    "\\aereopuerto\\static",
+    "\\aereopuerto\\static\\css",
+    "\\gestion_vuelos",
+    "\\gestion_vuelos\\templates",
+    "\\hoteleria",
+    "\\hoteleria\\templates",
+    "\\inicio",
+    "\\inicio\\templates",
     "\\pedidos"
   ],
-  "SelectedNode": "\\pedidos\\views.py",
   "PreviewInSolutionExplorer": false
 }

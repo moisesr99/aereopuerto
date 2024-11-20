@@ -14,7 +14,6 @@ from reportlab.lib.styles import getSampleStyleSheet
 from io import BytesIO
 from reportlab.pdfgen import canvas
 #openpyxl para generar EXCEL
-
 from openpyxl.styles import Font, Alignment
 import openpyxl
 from openpyxl import Workbook
@@ -29,13 +28,16 @@ def procesar_pedido(request):  # Pedidos para la app de tienda
     pedido = Pedido.objects.create(user=request.user)
     carro = Carro(request)
     lineas_pedido = []
+    total_pedido = sum(linea.total_pedido for linea in lineas_pedido)
 
     for key, value in carro.carro.items():  # Recorrer todos los productos
         lineas_pedido.append(LineaPedido(
             producto_id=key,
             cantidad=value["cantidad"],
             user=request.user,
-            pedido=pedido
+            pedido=pedido,
+            
+            
         ))
 
     LineaPedido.objects.bulk_create(lineas_pedido)
@@ -55,7 +57,8 @@ def procesar_pedido(request):  # Pedidos para la app de tienda
     return render(request, "confirmar_pedido.html", {
         "pedido": pedido,
         "lineas_pedido": lineas_pedido,
-        "pdf_response": pdf_response
+        "pdf_response": pdf_response,
+        "total_pedido":total_pedido
     })
 #INICIA GENERACION DE PDF
 def generar_pdf_pedido(request, pedido_id): 

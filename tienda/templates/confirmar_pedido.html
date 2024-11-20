@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div class="registro " id="carga" onload="deshabilitaRetroceso()" style="height: max-content;">
+<div class="registro " id="carga" onload="deshabilitaRetroceso()" style="height: max-content; width: 40%;justify-content:center;margin:auto; text-align:center;">
     <h2>PEDIDO REALIZADO CON ÉXITO</h2>
     <p id="usuario">Hola: {{request.user}} </p>
     <p>A continuación podrás ver los detalles de tu pedido</p>
@@ -23,6 +23,7 @@
                     <span class="precio">${{ linea.producto.precio }}</span>
                 {% endif %}
             </li>
+        <hr style="color:darkred;"> 
         {% empty %}
             <p>No hay productos en el pedido.</p>
         {% endfor %}
