@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<img src="{% static 'img/fondos/fondo_cafe.jpg' %}" alt="fondo" class="imagen3">
-<div class="registro texto-superpuesto" id="carga" onload="deshabilitaRetroceso()">
+<!--<img src="{% static 'img/fondos/fondo_cafe.jpg' %}" alt="fondo" style="z-index:-1; position:absolute;background-size:cover;background-position:center;"> -->
+<div class="registro " id="carga" onload="deshabilitaRetroceso()" style="z-index:2;">
     <!--
     {% if messages %}
         <div class="alert alert-danger" role="alert" onload="deshabilitaRetroceso()">
@@ -14,33 +14,33 @@
         </div>
     {% endif %}
     -->
-        <table class="vuelo">
-            <tr style="width:max-content;">
-                <td style="width:40%;"> 
-                    <h3><b>Busca Tu Vuelo</b></h3>
-                </td>
-                <td style="width:10%; margin-right:50px; padding:20px;"> 
-                    <label class="activo" for="flexSwitchCheckDefault" id="sencilloLabel">Sencillo</label>
-                </td>
-                <td style="width:30%; margin-left:20px;">
-                    <div class="form-check form-switch ">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                    </div>
-                </td>
-                <td style="width:10%; margin-left:-10%;"> 
-                    <label class="inactivo" for="flexSwitchCheckDefault" id="redondoLabel">Redondo</label>
-                </td>
-            </tr>
-        </table>
-        
+    <div class="container" style="padding:0;margin:0;">
+        <!--encabezado de busqueda (parte de los botones)-->
+        <div class="row">
+            <div class="col">
+                <h3><b>Busca Tu Vuelo</b></h3>
+            </div>
+            <div class="col">
+                <label class="activo" for="flexSwitchCheckDefault" id="sencilloLabel" >Sencillo</label>
+            </div>
+            <div class="col">
+                <div class="form-check form-switch ">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                </div>
+            </div>
+            <div class="col">
+                <label class="inactivo" for="flexSwitchCheckDefault" id="redondoLabel">Redondo</label>
+            </div>
+        </div>
+    </div>
+    <!--parte 2 (origen y ciudad )-->
+    <div class="container" style="padding:0;margin:0;">
         <form action="buscar/" method="GET" id="vuelos_form" onload="deshabilitaRetroceso()">
-            <table class="ciudades">
-                <tr style="width:max-content;">
-                    <td><label for="vlPart"><b>Origen:</b></label></td>
-                    <td><label for="vlDest"><b>Destino:</b></label></td>
-                </tr>
-                <tr>
-                    <td>
+            <div class="row">
+                <div class="row">
+
+                    <div class="col">
+                        <label for="vlPart" style="color:black;"><b>Origen:</b></label>
                         <input list="aeropuertos" type="text" id="vlPart" name="vlPart" required placeholder="Ciudad de Mexico" style="width:90%;">
                         <datalist id="aeropuertos">
                             <option value="Monterrey"></option>
@@ -49,48 +49,53 @@
                             <option value="Veracruz"></option>
                             <option value="Oaxaca"></option>
                         </datalist>
-                    </td>
-                    <td>
-                        <input list="aeropuertos" type="text" id="vlDest" name="vlDest" required placeholder="Monterrey,Nuevo Leon" style="width:90%;">
-                    </td>
-                </tr>
-            </table>
-        
-            <br>
-            <table style="justify-content:center;">
-                <tr style="width:max-content;">
-                    <td style="width:60%;">
-                        <label for="vlSalida"><b>SALIDA</b></label>
-                    </td>
-                    <td style="width:60%;">
-                        <label for="vlRegreso"><b>REGRESO</b></label>
-                    </td>
-                    <td style="width:30%;">
-                        <label for="vlAdultos"><b>ADULTOS</b></label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="date" id="vlSalida" name="vlSalida" required style="width:90%;">
-                    </td>
-                    <td>
-                        <input type="date" id="vlRegreso" name="vlRegreso" style="width:90%;">
-                    </td>
-                    <td>
-                        <input type="number" id="vlAdultos" name="vlAdultos" min="1" max="30" placeholder="2" style="width:90%;">
-                    </td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td colspan="3">
-                        <input type="submit" value="buscar vuelos" class="mi-boton">
-                    </td>
-                </tr>
-            </table>
-        </form>
-        
-     <br>
-     <br>
-    
-</div>
 
-{% endblock %}
+                    </div>
+
+                    <div class="col">
+                        <label for="vlDest" style="color:black;"><b>Destino:</b></label>
+                        <input list="aeropuertos" type="text" id="vlDest" name="vlDest" required placeholder="Monterrey,Nuevo Leon" style="width:90%;">
+
+                    </div>
+                </div>
+                
+            </div>
+    <!--parte 3 (tres inputs)-->
+            <br>
+            <div class="row">
+                
+                <div class="col" >
+                    <label for="vlSalida" style="color:black;"><b>SALIDA</b></label>
+                    <input type="date" id="vlSalida" name="vlSalida" required style="width:90%;">
+
+                </div>
+
+                <div class="col" >
+                    <label for="vlRegreso" style="color:black;"><b>REGRESO</b></label>
+                    <input type="date" id="vlRegreso" name="vlRegreso" style="width:90%;">
+
+                </div>
+
+                <div class="col" >
+                    <label for="vlAdultos" style="color:black;"><b>ADULTOS</b></label>
+                    <input type="number" id="vlAdultos" name="vlAdultos" min="1" max="30" placeholder="2" style="width:90%;">
+
+                </div>
+                
+            </div>
+    <!--parte de abajo(boton buscar vuelo) -->
+            <br />
+            <div class="row justify-content-center">
+                <div class="col justify-content-center" style="justify-content:center;margin:auto;" >
+                        <input type="submit" value="buscar vuelos" class="btn btn-outline-danger">
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <br>
+        <br>
+
+    </div>
+
+    {% endblock %}

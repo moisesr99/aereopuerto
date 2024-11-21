@@ -28,106 +28,109 @@
     {% block title %} {% endblock %}
     
 </head>
-<body onload="deshabilitaRetroceso()">
+<body onload="deshabilitaRetroceso()" >
     <!--INICIO DEL ENCABEZADO-->
     <div class="menu" style="text-align: center; justify-content:center;">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg ">
             <div class="container-fluid">
-              <a class="btn navbar-brand {% if request.path|slice:':6' == '/blog/' %}active{% endif %}" href="{% url 'crear_post' %}">BLOG</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item  px-lg4">
-                    <a class="btn nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'home' %}"> <img src="{% static 'img/iconos/house.svg' %}" width="25px" height="25px">Home</a>
-                  </li>
-                  <li class="nav-item  px-lg4">
-                    <a class="btn nav-link {% if request.path == '/vuelos/' %}active{% endif %}" href="{% url 'busqueda_vuelos' %}"><img src="{% static 'img/iconos/airplane.svg' %}" width="25px" height="25px">Vuelos</a>
-                  </li>
-                  <li class="nav-item  px-lg4">
-                    <a class="btn nav-link {% if request.path == '/hoteles/' %}active{% endif %}" href="{% url 'busqueda_hoteles' %}"><img src="{% static 'img/iconos/hotel.svg' %}" width="25px" height="25px">Hoteles</a>
-                  </li>
-                  <li class="nav-item  px-lg4">
-                    <a class="btn nav-link {% if request.path == '/tienda/' %}active{% endif %}" href="{% url 'tienda' %}"><img src="{% static 'img/iconos/gift.svg' %}" width="25px" height="25px">Tienda</a>
-                  </li>
-                  <li class="nav-item  px-lg4">
-                    <a class="btn nav-link {% if request.path == '/contactanos/' %}active{% endif %}" href="{% url 'contactanos' %}"><img src="{% static 'img/iconos/blog.svg' %}" width="25px" height="25px">contactanos</a>
-                  </li>
-                  <li class="nav-item {% if request.path == '/' %}active{% endif %} px-lg4">
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <img src="{% static 'img/iconos/telephone.svg' %}" width="25px" height="25px">+52 55 987 654 32
-                    </button>
-                  </li>
-                  <div class="dropdown" style="z-index:100;">
-                  {% if user.is_authenticated %}
-                  
-                   <a style="color:rgb(166, 52, 211);" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Hola {{ user.username }}
-                  </a>
-                  
-                   <ul class="dropdown-menu">
-                      
-                    <li><a style="color:rgb(166, 52, 211);" class="dropdown-item" href="#">Actualizar Datos</a></li>
-                    <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
-                  
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="{% url 'autentificacion:cerrar_sesion' %}">Cerrar Sesion</a></li>
-                  </ul>
-                    {%else%}
-                    
-                      <a style="color:rgb(166, 52, 211);" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        PERFIL
-                      </a>
-                    
-                    
-                    
-                    <ul class="dropdown-menu" style="z-index:100;">
-                      
-                      <li><a style="color:rgb(166, 52, 211);" class="dropdown-item" href="{% url 'autentificacion:iniciar_sesion' %}">INICIAR SESION</a></li>
-                      <li><a class="dropdown-item" href="{% url 'autentificacion:autentificar' %}">CREAR UNA CUENTA</a></li>
-                    
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                    {% endif %}
-                  </div>
-                <!-- Modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">Linea de Ayuda</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <h2>Puedes comunicarte 24/7, para problemas sobre tus reservaciones, compras y asesoria <b>+52 55 987 654 32</b></h2>
-                          <hr style="color:red;">
-                          <h3>Tambien puedes comunicarte desde la pagina utilizando el formulario<a href="{% url 'contactanos' %}"> CONTACTO </a></h3>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-                        </div>
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item  px-lg4">
+                          <a class="btn nav-link {% if request.path == '/blog/' %}active{% endif %}" aria-current="page" href="{% url 'crear_post' %}"> BLOG </a>
+                      </li>
+                      <li class="nav-item  px-lg4">
+                          <a class="btn nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'home' %}"> <img src="{% static 'img/iconos/house.svg' %}" width="25px" height="25px">Home</a>
+                      </li>
+                      <li class="nav-item  px-lg4">
+                          <a class="btn nav-link {% if request.path == '/vuelos/' %}active{% endif %}" href="{% url 'busqueda_vuelos' %}"><img src="{% static 'img/iconos/airplane.svg' %}" width="25px" height="25px">Vuelos</a>
+                      </li>
+                      <li class="nav-item  px-lg4">
+                          <a class="btn nav-link {% if request.path == '/hoteles/' %}active{% endif %}" href="{% url 'busqueda_hoteles' %}"><img src="{% static 'img/iconos/hotel.svg' %}" width="25px" height="25px">Hoteles</a>
+                      </li>
+                      <li class="nav-item  px-lg4">
+                          <a class="btn nav-link {% if request.path == '/tienda/' %}active{% endif %}" href="{% url 'tienda' %}"><img src="{% static 'img/iconos/gift.svg' %}" width="25px" height="25px">Tienda</a>
+                      </li>
+                      <li class="nav-item  px-lg4">
+                          <a class="btn nav-link {% if request.path == '/contactanos/' %}active{% endif %}" href="{% url 'contactanos' %}"><img src="{% static 'img/iconos/blog.svg' %}" width="25px" height="25px">contactanos</a>
+                      </li>
+                      <li class="nav-item {% if request.path == '/' %}active{% endif %} px-lg4">
+                          <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                              <img src="{% static 'img/iconos/telephone.svg' %}" width="25px" height="25px">+52 55 987 654 32
+                          </button>
+                      </li>
+                      <div class="dropdown" style="z-index:100;">
+                          {% if user.is_authenticated %}
+
+                          <a style="color:rgb(166, 52, 211);" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Hola {{ user.username }}
+                          </a>
+
+                          <ul class="dropdown-menu">
+
+                              <li><a style="color:rgb(166, 52, 211);" class="dropdown-item" href="#">Actualizar Datos</a></li>
+                              <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
+
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="{% url 'autentificacion:cerrar_sesion' %}">Cerrar Sesion</a></li>
+                          </ul>
+                          {%else%}
+
+                          <a style="color:rgb(166, 52, 211);" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              PERFIL
+                          </a>
+
+
+
+                          <ul class="dropdown-menu" style="z-index:100;">
+
+                              <li><a style="color:rgb(166, 52, 211);" class="dropdown-item" href="{% url 'autentificacion:iniciar_sesion' %}">INICIAR SESION</a></li>
+                              <li><a class="dropdown-item" href="{% url 'autentificacion:autentificar' %}">CREAR UNA CUENTA</a></li>
+
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                          </ul>
+                          {% endif %}
                       </div>
-                    </div>
+
+
+                  </ul>
+                  <a  aria-current="page" href="https://www.facebook.com/"> <img src="{% static 'img/iconos/facebook.svg' %}" width="25px" height="25px"></a>
+
+
+                  <a  aria-current="page" href="https://x.com/?lang=es"> <img src="{% static 'img/iconos/twitter.svg' %}" width="25px" height="25px"></a>
+
+
+                  <a  aria-current="page" href="https://www.instagram.com/"> <img src="{% static 'img/iconos/instagram.svg' %}" width="25px" height="25px"></a>
+
+
+                  <a  aria-current="page" href="{% url 'crear_post' %}"> <img src="{% static 'img/iconos/email.svg' %}" width="25px" height="25px"></a>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Linea de Ayuda</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                  <h2>Puedes comunicarte 24/7, para problemas sobre tus reservaciones, compras y asesoria <b>+52 55 987 654 32</b></h2>
+                                  <hr style="color:red;">
+                                  <h3>Tambien puedes comunicarte desde la pagina utilizando el formulario<a href="{% url 'contactanos' %}"> CONTACTO </a></h3>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                              </div>
+                          </div>
+                      </div>
                   </div>
-               
+
 
               </div>
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="https://www.facebook.com/"> <img src="{% static 'img/iconos/facebook.svg' %}" width="25px" height="25px"></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="https://x.com/?lang=es"> <img src="{% static 'img/iconos/twitter.svg' %}" width="25px" height="25px"></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="https://www.instagram.com/"> <img src="{% static 'img/iconos/instagram.svg' %}" width="25px" height="25px"></a>
-                </li>
-                <li class="nav-item  px-lg4">
-                    <a class="nav-link active" aria-current="page" href="{% url 'crear_post' %}"> <img src="{% static 'img/iconos/email.svg' %}" width="25px" height="25px"></a>
-                </li>
-            </ul>
+              
             </div>
         </nav>
         
@@ -137,15 +140,17 @@
 <!--FIN DEL ENCABEZADO-->
 
 <!--Declaracion del bloque cambiante-->
+<main class="flex-grow-1" style="margin-top:5%;" >
 {% block content %}
 
 <!--insercion de las plantilla hijas-->
 {% endblock %}
+</main>
 <!--Fin del bloque cambiante-->
 
 <!--INICIO DEL PIE DE PAGINA-->
-
-<div class="piep card-footer">
+<footer class="py-3 text-center" style="margin-top:15%;">
+<div class="piep card-footer" style="padding:0; margin:0;">
     <center>
         <table class="tabla2" style="width: 80%;">
             <tr>
@@ -207,6 +212,7 @@
         <p style="color: gray;">Copyright &#9400 MOI6. Design. All rights reserved</p>
     </center>
 </div>
+</footer>
 <!--FIN DEL PIE DE PAGINA-->
 <script src="{% static 'js\main.js' %}"></script>
 <script src="{% static 'js\validar.js' %}"></script>

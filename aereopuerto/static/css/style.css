@@ -85,12 +85,7 @@ body{
     width: max-content;
     height: max-content;
 }
-.registro table{
-    padding: 0px;
-    border: 0px;
-    background-color:rgba(0, 0, 0, 0) ;
-    display: flex;
-}
+
 
 
 .mi-boton{
@@ -232,8 +227,16 @@ body{
 }
 .menu{
     background-color: #e8e4e4;
+    width:100%;
 }
-.registro h3{
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: start; /* Asegura que el contenido no se estire */
+}
+
+.registro h3 {
     color: #795548;
 }
 /* estilos switch boton */
