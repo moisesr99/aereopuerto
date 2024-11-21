@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<img src="{% static 'img/fondos/fondo_cafe.jpg' %}" alt="fondo" class="imagen3">
-<div class="registro texto-superpuesto" id="carga" onload="deshabilitaRetroceso()" style="justify-content:center; text-align:center; margin:auto;" >
+<!-- <img src="{% static 'img/fondos/fondo_cafe.jpg' %}" alt="fondo" class="imagen3"-->
+<div class="registro " id="carga" onload="deshabilitaRetroceso()"  >
     <!--
     {% if messages %}
         <div class="alert alert-danger" role="alert" onload="deshabilitaRetroceso()">
@@ -14,69 +14,64 @@
         </div>
     {% endif %}
     -->
-        <table class="vuelo" style="justify-content:center; text-align:center; margin:auto;">
-            <tr style="width:100%;">
-                <td style="width:40%;"> 
-                    <h3 style="text-align:center;"><b>Busca Tu Hotel</b></h3>
-                </td>
-            </tr>
-        </table>
+    <!--encabezado de busqueda-->
+    <div class="container" style="padding:0;">
+        <div class="row" style="padding:0%;">
+            <div class="col">
+                <h3 style="text-align:center;"><b>Busca Tu Hotel</b></h3>
+            </div>
+        </div>
+    </div>
+    <!--parte 2 (destino y adultos)-->
+    <div class="container">
         
         <form action="buscarH/" method="GET"  onload="deshabilitaRetroceso()" id="hotel_form">
-            <table class="ciudades">
-                <tr style="width:max-content;">
-                    <td><label for="HT_dest"><b>Destino:</b></label></td>
-                    <td><label for="adultos"><b>ADULTOS</b></label> </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input list="aeropuertos" type="text" id="HT_dest" name="HT_dest" required placeholder="Monterrey,Nuevo Leon" style="width:90%;">
-                        <datalist id="aeropuertos">
-                            <option value="Monterrey"></option>
-                            <option value="CDMX"></option>
-                            <option value="Puebla"></option>
-                            <option value="Veracruz"></option>
-                            <option value="Oaxaca"></option>
-                        </datalist>
-                    </td>
-                    <td >
-                        
-                        <input type="number" id="adultos" name="adultos" min="1" max="30" placeholder="2" style="width:60%;">
+            <div class="row">
+                <div class="col">
+                    <label for="HT_dest" style="color:black;"><b>Destino:</b></label>
+                    <input list="aeropuertos" type="text" id="HT_dest" name="HT_dest" required placeholder="Monterrey,Nuevo Leon" style="width:90%;">
+                    <datalist id="aeropuertos">
+                        <option value="Monterrey"></option>
+                        <option value="CDMX"></option>
+                        <option value="Puebla"></option>
+                        <option value="Veracruz"></option>
+                        <option value="Oaxaca"></option>
+                    </datalist>
+                </div>
 
-                    </td>
-                </tr>
-            </table>
-        
+                <div class="col">
+                    <label for="adultos" style="color:black;"><b>ADULTOS</b></label>
+                    <br />
+                    <input type="number" id="adultos" name="adultos" min="1" max="30" placeholder="2" style="width:90%;" >
+                </div>
+            </div>
+     <!--parte 3 (fechas)-->
             <br>
-            <table style="justify-content:center;">
-                <tr style="width:max-content;">
-                    <td style="width:60%;">
-                        <label for="HT_entrada"><b>ENTRADA:</b><p>(14:00 hrs)</p></label>
-                    </td>
-                    <td style="width:60%;">
-                        <label for="HT_salida"><b>SALIDA</b><p>(12:00 hrs)</p></label>
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td>
-                        <input type="date" id="HT_entrada" name="HT_entrada" required style="width:90%;">
-                    </td>
-                    <td>
-                        <input type="date" id="HT_salida" name="HT_salida" required style="width:90%;">
-                    </td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td colspan="2">
-                        <input type="submit" value="buscar hoteles" class="mi-boton" style="justify-content:center; text-align:center;">
-                    </td>
-                </tr>
-            </table>
+            <div class="row">
+                
+                <div class="col">
+                    <label for="HT_entrada" style="color:black;"><b>ENTRADA:</b><p>(14:00 hrs)</p></label>
+                    <br />
+                    <input type="date" id="HT_entrada" name="HT_entrada" required style="width:90%;">
+                </div>
+                <div class="col">
+                    <label for="HT_salida" style="color:black;"><b>SALIDA</b><p>(12:00 hrs)</p></label>
+                    <br />
+                    <input type="date" id="HT_salida" name="HT_salida" required style="width:90%;">
+                </div>
+                <br />
+                <hr style="color:rgba(0,0,0,0);" />
+    <!--parte de abajo(boton de busqueda)-->
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" value="buscar hoteles" class="btn btn-outline-danger" style="justify-content:center; text-align:center;" style="width:90%;">
+                    </div>
+                </div>
+            </div>
         </form>
         
-     <br>
-     <br>
-    
+    </div>
 </div>
 
 {% endblock %}
