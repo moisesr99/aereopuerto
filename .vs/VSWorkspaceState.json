@@ -3,14 +3,15 @@
     "",
     "\\aereopuerto",
     "\\aereopuerto\\static",
-    "\\aereopuerto\\static\\css",
+    "\\aereopuerto\\static\\js",
+    "\\autentificacion",
+    "\\blog",
+    "\\carro",
     "\\gestion_vuelos",
     "\\gestion_vuelos\\templates",
     "\\hoteleria",
     "\\hoteleria\\templates",
-    "\\inicio",
-    "\\inicio\\templates",
-    "\\pedidos"
+    "\\tienda"
   ],
   "SelectedNode": "\\gestion_vuelos\\templates\\busqueda_vuelos.html",
   "PreviewInSolutionExplorer": false
