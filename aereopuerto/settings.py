@@ -26,7 +26,8 @@ SECRET_KEY = 'z$f(gply&i00ft4*aul!!lk=5ybm^$ugdwn^&n@st!m#cfm#92'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['renta-peliculas.fly.dev','localhost']
+ALLOWED_HOSTS = ['renta-peliculas.fly.dev','localhost','127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ["https://renta-peliculas.fly.dev"]
 
 # CAMBIO DE FORMATO DE FECHA PARA QUE COINCIDA CON EL INPUT DE FECHA DEL HTML VUELOS (debo modificar el formato de la fecha del html para que coincida con el de djnago)
 DATE_FORMAT = 'd/m/Y'
