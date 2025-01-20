@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z$f(gply&i00ft4*aul!!lk=5ybm^$ugdwn^&n@st!m#cfm#92'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['renta-peliculas.fly.dev','localhost']
 
 # CAMBIO DE FORMATO DE FECHA PARA QUE COINCIDA CON EL INPUT DE FECHA DEL HTML VUELOS (debo modificar el formato de la fecha del html para que coincida con el de djnago)
 DATE_FORMAT = 'd/m/Y'
