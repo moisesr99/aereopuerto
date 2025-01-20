@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'crispy_forms', #app instalada para dar formato a los formularios django
     'inicio', #app principal para home y contacto
     'pedidos', #registrar pedidos de la app tienda
+    'whitenoise.runserver_nostatic', #app para los archivos staticos
 ]
 
 MIDDLEWARE = [
@@ -62,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'aereopuerto.urls'
@@ -153,8 +155,11 @@ USE_L10N = False # true usara la localizacion de la zona horaria, False evitara 
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "aereopuerto\\static"),  # Asegúrate de que esta ruta sea correcta
+    os.path.join(BASE_DIR, "static"),  # Asegúrate de que esta ruta sea correcta
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' #para optimizar los archivos estaticos
 
 #direccion de archivos multimedia que inserta django/admin
 MEDIA_URL='/media/'
